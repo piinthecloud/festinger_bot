@@ -57,7 +57,7 @@ app.event('app_home_opened', async ({ event, client, context }) => {
         ]
       }
     });
-      console.log("event")
+    console.log("event")
   }
 
   
@@ -67,13 +67,11 @@ app.event('app_home_opened', async ({ event, client, context }) => {
 });
 
 
-app.message(subtype('message_changed'), ({ event, logger }) => {
-  console.log(`The user ${event.message.user} changed their message from ${event.previous_message.text} to ${event.message.text}`);
-});
 
-app.event('message', async ({ type, channel, text, user }) => {
+app.event('message', async ({message}) => {
   try {
-    console.log(text)
+    console.log(message)
+    if (message.text in)
   }
   catch (error) {
     console.error(error);

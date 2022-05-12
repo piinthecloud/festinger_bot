@@ -10,19 +10,18 @@ const app = new App({
 
 app.event('message', async ({client, message}) => {
   try {
-    console.log(message)
-    if (message.text.includes("test")){
+    
+    if (message && message.text.includes("Festinger")){
           const messageId = message.ts
           const channelId = message.channel
           
           try {
               // Call the chat.delete method using the WebClient
               const result = await client.chat.delete({
+                token:process.env.USER_TOKEN,
                 channel: channelId,
                 ts: messageId
               });
-
-              console.log(result);
             }
             catch (error) {
               console.error(error);

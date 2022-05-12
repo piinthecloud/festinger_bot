@@ -1,5 +1,5 @@
 // Require the Bolt package (github.com/slackapi/bolt)
-const { App } = require("@slack/bolt");
+const { App, subtype } = require("@slack/bolt");
 
 const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
@@ -64,6 +64,11 @@ app.event('app_home_opened', async ({ event, client, context }) => {
   catch (error) {
     console.error(error);
   }
+});
+
+
+app.message(subtype('message_changed'), ({ event, logger }) => {
+  console.log(`The user ${event.message.user} changed their message from ${event.previous_message.text} to ${event.message.text}`);
 });
 
 app.event('message', async ({ type, channel, text, user }) => {

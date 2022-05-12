@@ -11,7 +11,7 @@ const app = new App({
 app.event('message', async ({client, message}) => {
   try {
     
-    if (message && message.text.includes("Festinger")){
+    if (message && message.text.includes("Google 'Festinger Vault' and let's get started!")){
           const messageId = message.ts
           const channelId = message.channel
           

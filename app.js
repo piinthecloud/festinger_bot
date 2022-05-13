@@ -8,11 +8,18 @@ const app = new App({
 
 app.event("message", async ({ client, message }) => {
   try {
-    if (
-      message &&
-      message.text.includes("Your WordPress Guy") &&
-      message.text.includes("Festinger")
-    ) {
+    const messageNormalize = message && message.text.toLowerCase();
+    const fileNormalize = message && message.files && message.files[0].preview.toLowerCase();
+
+    const isFestMessage =
+      (messageNormalize && messageNormalize.includes("your wordPress guy") && message.includes("festinger")) ||
+      messageNormalize.includes("festingers' vault") ||
+      messageNormalize.includes("festinger's vault") ||
+      messageNormalize.includes("festingers vault");
+
+    const isFestFile = fileNormalize && fileNormalize.includes("festinger");
+
+    if (isFestMessage || isFestFile) {
       const messageId = message.ts;
       const channelId = message.channel;
 

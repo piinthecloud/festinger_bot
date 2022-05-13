@@ -10,7 +10,8 @@ app.event("message", async ({ client, message }) => {
   try {
     if (
       message &&
-      message.text.includes("Google 'Festinger Vault' and let's get started!")
+      message.text.includes("Your WordPress Guy") &&
+      message.text.includes("Festinger")
     ) {
       const messageId = message.ts;
       const channelId = message.channel;

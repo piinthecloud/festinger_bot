@@ -1,5 +1,6 @@
 // Require the Bolt package (github.com/slackapi/bolt)
 const { App, subtype } = require("@slack/bolt");
+const { getLogger } = require("@slack/web-api/dist/logger");
 
 const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
@@ -12,7 +13,7 @@ app.event("message", async ({ client, message }) => {
     const fileNormalize = message && message.files && message.files[0].preview.toLowerCase();
 
     const isFestMessage =
-      (messageNormalize && messageNormalize.includes("your wordPress guy") && message.includes("festinger")) ||
+      (messageNormalize && messageNormalize.includes("your wordpress guy") && message.includes("festinger")) ||
       messageNormalize.includes("festingers' vault") ||
       messageNormalize.includes("festinger's vault") ||
       messageNormalize.includes("festingers vault");
@@ -22,7 +23,9 @@ app.event("message", async ({ client, message }) => {
     if (isFestMessage || isFestFile) {
       const messageId = message.ts;
       const channelId = message.channel;
-
+      
+      console.log(`⚡️⚡️⚡️ User ${user} posted to channel ${channelId} ⚡️⚡️⚡️`)
+      
       try {
         // Call the chat.delete method using the WebClient
         const result = await client.chat.delete({

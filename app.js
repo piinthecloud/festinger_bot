@@ -12,8 +12,8 @@ app.event("message", async ({ client, message }) => {
     const messageNormalize = message && message.text.toLowerCase();
     const fileNormalize = message && message.files && message.files[0].preview.toLowerCase();
 
-    const isFestMessage =
-      (messageNormalize && messageNormalize.includes("your wordpress guy") && message.includes("festinger")) ||
+    const isFestMessage = 
+      (messageNormalize && messageNormalize.includes("your wordpress guy") && messageNormalize.includes("festinger")) ||
       messageNormalize.includes("festingers' vault") ||
       messageNormalize.includes("festinger's vault") ||
       messageNormalize.includes("festingers vault");
@@ -24,7 +24,7 @@ app.event("message", async ({ client, message }) => {
       const messageId = message.ts;
       const channelId = message.channel;
       
-      console.log(`⚡️⚡️⚡️ User ${user} posted to channel ${channelId} ⚡️⚡️⚡️`)
+      console.log(`⚡️⚡️⚡️ User ${message.user} posted to channel ${channelId} ⚡️⚡️⚡️`)
       
       try {
         // Call the chat.delete method using the WebClient

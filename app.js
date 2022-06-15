@@ -16,6 +16,8 @@ app.event("message", async ({ client, message }) => {
       (messageNormalize && messageNormalize.includes("your wordpress guy") && messageNormalize.includes("festinger")) ||
       messageNormalize.includes("festingers' vault") ||
       messageNormalize.includes("festinger's vault") ||
+      messageNormalize.includes("festinger vault") ||
+      messageNormalize.includes("festingerbhw") ||
       messageNormalize.includes("festingers vault");
 
     const isFestFile = fileNormalize && fileNormalize.includes("festinger");
